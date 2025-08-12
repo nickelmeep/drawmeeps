@@ -6,6 +6,7 @@ let currentColor = '#000000';
 
 const colorPicker = document.getElementById('color-picker');
 const clearBtn = document.getElementById('clear-btn');
+const saveBtn = document.getElementById('save-btn');
 
 colorPicker.addEventListener('change', (e) => {
   currentColor = e.target.value;
@@ -36,4 +37,12 @@ canvas.addEventListener('mouseleave', () => {
 
 clearBtn.addEventListener('click', () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+});
+
+saveBtn.addEventListener('click', () => {
+  const image = canvas.toDataURL('image/png');
+  const link = document.createElement('a');
+  link.href = image;
+  link.download = 'drawmeep.png';
+  link.click();
 });
